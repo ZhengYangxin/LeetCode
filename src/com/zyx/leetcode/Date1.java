@@ -6,9 +6,9 @@ package com.zyx.leetcode;
  * @dec 在有序数组中去重，并返回去重后的数组长度(remove-duplicates-from-sorted-array)
  * solution:
  * 数组完成排序后，定义两个指针i，j。一个慢指针i，一个快指针j，当nums[i] == nums[j]时，递增j。
- * 当遇到nums[i] != nums[j]时，并将nums[j]的值赋值给nums[i+1], i递增，。继续进行j的递增，去重，知道j到达数组的末尾
+ * 当遇到nums[i] != nums[j]时，将nums[j]的值赋值给nums[i+1], 并i递增。继续进行j的递增，去重，直到j到达数组的末尾
  * attention:
- * 当i，j指针位置的元素是相邻，且nums[i] != nums[j],会出现原地，因此可以添加条件j - i > 1
+ * 当i，j指针位置的元素是相邻，且nums[i] != nums[j],会出现原地赋值，因此可以添加条件j - i > 1
  */
 public class Date1 {
     public static void main(String[] args) {
