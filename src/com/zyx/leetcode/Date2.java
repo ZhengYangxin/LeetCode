@@ -11,9 +11,7 @@ public class Date2 {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 4, 4, 6, 7, 8, 8, 11};
         rotate2(nums, 3);
-        for (int num : nums) {
-            System.out.print(num + " ");
-        }
+        PrintUtils.print(nums);
     }
 
     public static void rotate(int[] nums, int k) {

@@ -20,9 +20,7 @@ public class Date3 {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 4, 9, 1};
         plusOne(nums);
-        for (int num : nums) {
-            System.out.print(num + " ");
-        }
+        PrintUtils.print(nums);
     }
 
     public static int[] plusOne(int[] digits) {
