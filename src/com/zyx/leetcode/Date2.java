@@ -10,7 +10,7 @@ package com.zyx.leetcode;
 public class Date2 {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 4, 4, 6, 7, 8, 8, 11};
-        rotate(nums, 3);
+        rotate2(nums, 3);
         for (int num : nums) {
             System.out.print(num + " ");
         }
@@ -29,6 +29,35 @@ public class Date2 {
             nums[end] = temp;
             start++;
             end--;
+        }
+    }
+
+    public static void rotate1(int[] nums, int k) {
+        int temp, previous;
+        for (int i = 0; i < k; i++) {
+            previous = nums[nums.length - 1];
+            for (int j = 0; j < nums.length; j++) {
+                temp = nums[j];
+                nums[j] = previous;
+                previous = temp;
+            }
+        }
+    }
+
+
+    public static void rotate2(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+
+        int[] a = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            a[(i + k) % nums.length] = nums[i];
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = a[i];
         }
     }
 }
