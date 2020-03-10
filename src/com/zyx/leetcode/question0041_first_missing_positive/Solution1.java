@@ -22,7 +22,7 @@ public class Solution1 {
                 continue;
             }
 
-            while (nums[i] > 0 && nums[i] <= nums.length &&  nums[nums[i] -1]!= nums[i]){
+            while (nums[nums[i] -1]!= nums[i]){
                 swap(nums, nums[i] - 1, i);
             }
 

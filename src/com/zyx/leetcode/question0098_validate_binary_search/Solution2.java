@@ -12,6 +12,8 @@ package com.zyx.leetcode.question0098_validate_binary_search;
  *
  * 只要判断节点的有效范围就可以判断搜索二叉树的有效性，所以通过递归可以实现
  *
+ * 执行耗时:1 ms,击败了82.81% 的Java用户,内存消耗:41.4 MB,击败了5.05% 的Java用户
+ *
  */
 public class Solution2 {
     public boolean isValideBts(TreeNode root) {

@@ -12,13 +12,13 @@ package com.zyx.leetcode.question0169_majority_element;
 public class Solution4 {
     public int majorityElement(int[] nums) {
         int count = 0;
-        Integer candidate = null;
+        Integer cadidate = null;
         for (int num : nums) {
             if (count == 0) {
-                candidate = num;
+                cadidate = num;
             }
-            count += (num == candidate) ? 1 : -1;
+            count += (num == cadidate) ? 1 : -1;
         }
-        return candidate;
+        return cadidate;
     }
 }

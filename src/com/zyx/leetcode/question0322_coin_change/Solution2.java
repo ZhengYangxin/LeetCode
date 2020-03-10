@@ -1,27 +1,30 @@
 package com.zyx.leetcode.question0322_coin_change;
 
+import java.util.Arrays;
+
 /**
  *
  * 动态规划
  *
  * dp方程 f(n)= min(f(n-k) k(1,2,5)) + 1
  *
+ * dp[i] 为i面值所需的最小硬币数
+ * dp[i] = min(dp[i - coins[j]]) +1
  */
 public class Solution2 {
     public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-
+        // 初始值为amount +1， 若dp[i]元素未修改则意味着没有找到解
+        Arrays.fill(dp, amount + 1);
+        dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
-            int min = Integer.MAX_VALUE;
             for (int coin : coins) {
-                if (i - coin >= 0 && dp[i - coin] != -1) {
-                    min = Math.min(min, dp[i - coin]);
+                if (i >= coin) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
-
-            dp[i] = min == Integer.MAX_VALUE ? -1 : min + 1;
         }
-        return dp[amount];
+        return dp[amount] > amount ? -1: dp[amount];
     }
 
     public static void main(String[] args) {

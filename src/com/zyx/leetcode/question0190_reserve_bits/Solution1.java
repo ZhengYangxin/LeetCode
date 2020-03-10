@@ -26,7 +26,6 @@ public class Solution1 {
         System.out.println("result0 = " + Integer.toBinaryString(6));
         System.out.println("result = " + result);
         System.out.println("result1 = " + Integer.toBinaryString(result));
-
     }
 
 }

@@ -41,7 +41,6 @@ public class Solution2 {
 
             while (i < j) {
                 int sum = nums[k] + nums[i] + nums[j];
-
                 if (sum < 0) {
                     while (i < j && nums[i] == nums[++i]) ;
                 } else if (sum > 0) {

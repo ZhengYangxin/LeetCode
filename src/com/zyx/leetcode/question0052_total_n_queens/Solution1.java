@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution1 {
+    private int level = 0;
     public int totalNQueens(int n) {
         List<Integer> ans = new ArrayList<>();
         solve(new ArrayList<Integer>(), n, ans);
@@ -12,13 +13,13 @@ public class Solution1 {
 
     private void solve(ArrayList<Integer> queens, int n, List<Integer> ans) {
         if (queens.size() == n) {
-            ans.add(1);
+            level++;
             return;
         }
 
         for (int col = 0; col < n; col++) {
             if (!queens.contains(col)) {
-                if (isAttack(queens, n)) {
+                if (isAttack(queens, col)) {
                     continue;
                 }
                 queens.add(col);
@@ -43,6 +44,6 @@ public class Solution1 {
     public static void main(String[] args) {
         Solution1 solution2 = new Solution1();
         int result = solution2.totalNQueens(4);
-        System.out.println("result = " + result);
+        System.out.println("result = " + solution2.level);
     }
 }

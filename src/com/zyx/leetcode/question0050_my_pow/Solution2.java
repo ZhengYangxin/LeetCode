@@ -34,7 +34,7 @@ public class Solution2 {
 
     public static void main(String[] args) {
         Solution2 solution1 = new Solution2();
-        double v = solution1.myPow(2, 2);
+        double v = solution1.myPow(1, Integer.MIN_VALUE);
         System.out.println(v);
     }
 }

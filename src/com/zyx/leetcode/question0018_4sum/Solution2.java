@@ -29,39 +29,19 @@ public class Solution2 {
                 }
                 int left = j + 1, right = n - 1;
                 while (left < right) {
-                    if (nums[i] + nums[j] + nums[left] + nums[right] == target) {
-                        addToListList(nums[i], nums[j], nums[left], nums[right], listList);
-                        left++;
-                        right--;
-                        while (left < right && nums[left] == nums[left - 1]) {
-                            left++;
-                        }
-                        while (left < right && nums[right] == nums[right + 1]) {
-                            right--;
-                        }
-                    } else if (nums[i] + nums[j] + nums[left] + nums[right] < target) {
-                        left++;
-                        while (left < right && nums[left] == nums[left - 1]) {
-                            left++;
-                        }
+                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
+                    if (sum > target) {
+                        while (left < right && nums[right] == nums[--right]) ;
+                    } else if (sum < target) {
+                        while (left < right && nums[left] == nums[++left]) ;
                     } else {
-                        right--;
-                        while (left < right && nums[right] == nums[right + 1]) {
-                            right--;
-                        }
+                        listList.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        while (left < right && nums[right] == nums[--right]) ;
+                        while (left < right && nums[left] == nums[++left]) ;
                     }
                 }
             }
         }
         return listList;
-    }
-
-    private void addToListList(int num1, int num2, int num3, int num4, List<List<Integer>> listList) {
-        List<Integer> list = new ArrayList<>();
-        list.add(num1);
-        list.add(num2);
-        list.add(num3);
-        list.add(num4);
-        listList.add(list);
     }
 }

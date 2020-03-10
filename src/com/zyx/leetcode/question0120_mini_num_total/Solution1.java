@@ -31,38 +31,41 @@ public class Solution1 {
         return mininumUpdate(0, 0, triangle, memo);
     }
 
-    private int mininum(int level, int i, List<List<Integer>> triangle) {
-        if (level == triangle.size() - 1) {
-            return triangle.get(level).get(i);
+    private int mininum(int i, int j, List<List<Integer>> triangle) {
+        if (i == triangle.size() - 1) {
+            return triangle.get(i).get(j);
         }
-        int left = mininum(level + 1, i, triangle);
-        int right = mininum(level + 1, i + 1, triangle);
-        return Math.min(left, right) + triangle.get(level).get(i);
+
+        int left = mininum(i + 1, j, triangle);
+        int right = mininum(i + 1, j + 1, triangle);
+        return Math.min(left, right) + triangle.get(i).get(j);
     }
 
     /**
      * 优化
      * 通过增加一个数组memo[leve][i]当前层当前元素的最小值
      *
-     * @param level
+     * 执行耗时:1 ms,击败了100.00% 的Java用户,内存消耗:39.3 MB,击败了5.04% 的Java用户
+     *
      * @param i
+     * @param j
      * @param triangle
      * @param memo
      * @return
      */
-    private int mininumUpdate(int level, int i, List<List<Integer>> triangle, int[][] memo) {
-        if (level == triangle.size() - 1) {
-            return triangle.get(level).get(i);
+    private int mininumUpdate(int i, int j, List<List<Integer>> triangle, int[][] memo) {
+        if (i == triangle.size() - 1) {
+            return triangle.get(i).get(j);
         }
 
-        if (memo[level][i] != 0) {
-            return memo[level][i];
+        if (memo[i][j] != 0) {
+            return memo[i][j];
         }
 
-        int left = mininum(level + 1, i, triangle);
-        int right = mininum(level + 1, i + 1, triangle);
-        memo[level][i] = Math.min(left, right) + triangle.get(level).get(i);
-        return memo[level][i];
+        int left = mininumUpdate(i + 1, j, triangle, memo);
+        int right = mininumUpdate(i + 1, j+1, triangle, memo);
+
+        memo[i][j] = Math.min(left, right) + triangle.get(i).get(j);
+        return memo[i][j];
     }
-
 }

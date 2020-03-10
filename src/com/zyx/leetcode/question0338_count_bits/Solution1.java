@@ -6,6 +6,8 @@ package com.zyx.leetcode.question0338_count_bits;
  *  前一个比特位1的数量加一
  *  dp[i] = dp[i& (i-1)] + 1
  *
+ *  因为 dp[i & (i - 1)] < dp[i]  所以dp[i & (i - 1)]肯定是事先算好的
+ *
  */
 public class Solution1 {
     public int[] countBits(int n) {

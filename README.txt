@@ -6,6 +6,8 @@ https://leetcode.wang/
 
 https://visualgo.net/zh
 
+https://github.com/yangzhaocheng/interview
+
 重点代码
 
 反转链表
@@ -25,7 +27,6 @@ pubic ListNode reverse(ListNode head) {
 中序遍历  stack
 
 public List<Integer> inorderTraversal(TreeNode root) {
-
     List<Integer> list = new Arrays<>();
     Stack<TreeNode> stack =new Stack<>();
     TreeNode cur = root;
@@ -48,9 +49,7 @@ public List<Integer> inorderTraversal(TreeNode root) {
 public List<Integer> preorderTraversal(TreeNode root) {
     List<Integer> list = new ArrayList<>();
     Stack<TreeNode> stack = new Stack<>();
-
     stack.add(root);
-
     while(!stack.isEmpty()) {
         TreeNode node = stack.pop();
         if(node != null) {
@@ -413,6 +412,91 @@ public void minWindow(String s, String t){
     }
 }
 
+两个队列实现stack
+public void push(int x){
+    inQueue.add(x);
+    while(!outQueue.isEmpty(){
+        inQueue.add(outQueue.poll());
+    }
+
+    while(!inQueue.isEmpty){
+        outQueue.add(inQueue.poll);
+    }
+}
+
+两个栈实现队列
+public int pop(){
+    if(outStack.isEmpty()){
+        while(!inStack.isEmpty){
+            outStack.push(inStack.pop());
+        }
+    }
+    return outStack.pop();
+}
+
+
+
+字典樹
+public class TrieNode {
+    boolean isWord;
+    TrieNode[] children;
+    char val;
+
+    public TrieNode(){
+        children = new TrieNode[26];
+    }
+
+    public TrieNode(char c){
+        this();
+        this.val = c;
+    }
+}
+
+public class Trie {
+    TrieNode root;
+
+    public Trie() {
+        root = new TrieNode('');
+    }
+
+    public void insert(String word) {
+        TrieNode node = root;
+        for(int i = 0; i < word.length; i++){
+            char ch = word.charAt(i);
+            if(node.children[ch - 'a'] == null){
+                node.children[ch - 'a'] = new TrieNode(ch);
+            }
+            node  = node.children[ch - 'a'];
+        }
+
+       node.isWord = true;
+    }
+
+    public void search(String word){
+        TrieNode node = root;
+        for(int i = 0; i < word.length; i++){
+            char ch = word.charAt(i);
+            if(node.children[ch - 'a'] == null){
+                return false;
+            }
+            node = node.children[ch - 'a'];
+        }
+        return node.isWord;
+    }
+}
+
+
+插入排序
+public void insertion(int[] nums) {
+    for(int i = 1; i < nums.length; i++) {
+        int temp = nums[i];
+        int j = 0;
+        for(j = i; j >=0 && nums[j-1] > temp; j--){
+            nums[i] = nums[j-1];
+        }
+        nums[j] = temp;
+    }
+}
 
 198 打家劫舍
 

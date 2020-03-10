@@ -9,12 +9,16 @@ import java.util.List;
  * 2. 定义状态数组 a[i][j]
  * 3. DP方程 a[i][j] = min(a[i+1][j], a[i+1][j+1]) + a[i][j]
  *
+ *
+ * 执行耗时:9 ms,击败了11.33% 的Java用户,内存消耗:39.3 MB,击败了5.04% 的Java用户
+ *
+ *
  */
 public class Solution2 {
     public int minimumTotal(List<List<Integer>> triangle) {
         for (int i = triangle.size() - 2; i >= 0; i--) {
             for (int j = 0; j < triangle.get(i).size(); j++) {
-                int num = Math.min(triangle.get(i + 1).get(j), triangle.get(i+1).get(j+1)) + triangle.get(i).get(j);
+                int num = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)) + triangle.get(i).get(j);
                 triangle.get(i).set(j, num);
             }
         }

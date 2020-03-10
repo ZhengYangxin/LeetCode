@@ -19,10 +19,6 @@ public class Solution1 {
 
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> results = new ArrayList<>();
-//        ArrayList<Integer> nums_lst = new ArrayList<Integer>();
-//        for (int num : nums) {
-//            nums_lst.add(num);
-//        }
         helper(0, nums, results);
         return results;
     }
@@ -41,12 +37,6 @@ public class Solution1 {
             helper(begin+1, nums, results);
             swap(nums, i, begin);
         }
-
-//        for (int i = begin; i < nums.length; i++) {
-//            swap(nums, i, begin);
-//            helper(begin + 1, nums, results);
-//            swap(nums, i, begin);
-//        }
     }
 
     private void swap(int[] nums, int i, int begin) {

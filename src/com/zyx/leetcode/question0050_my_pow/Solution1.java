@@ -17,12 +17,12 @@ public class Solution1 {
         if (x == 0) {
             return 0;
         }
-        long N = n;
-        if (N < 0) {
+        long a = n;
+        if (a < 0) {
             x = 1 / x;
-            N = -N;   // 当n = -2^31时，进行取反会越界，所以单位需要是long
+            a = -a;   // 当n = -2^31时，进行取反会越界，所以单位需要是long
         }
-        return fastPow(x, N);
+        return fastPow(x, a);
 
     }
 
@@ -45,9 +45,9 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        double v = solution1.myPow(0, -3);
+        double v = solution1.myPow(1, -2147483648);
         System.out.println(v);
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Integer.MIN_VALUE);
+//        System.out.println(Integer.MAX_VALUE);
+//        System.out.println(Integer.MIN_VALUE);
     }
 }

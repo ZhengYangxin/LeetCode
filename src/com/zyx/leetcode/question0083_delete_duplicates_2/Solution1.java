@@ -16,20 +16,20 @@ public class Solution1 {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode pre = dummy;
-        ListNode curr = head;
-        while (curr != null) {
-            if (curr.next != null && curr.next.val != curr.val) {
-                pre = pre.next;
-                curr = curr.next;
-            } else {
-                while (curr.next != null && curr.next.val == curr.val) {
-                    curr = curr.next;
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.next != null && cur.val == cur.next.val) {
+                while (cur.next != null && cur.val == cur.next.val) {
+                    cur = cur.next;
                 }
-
-                // pre 1 1 1 next
-                pre.next = curr;
+//                       cur
+//                pre 1 1 1 2
+                pre.next = cur;
                 pre = pre.next;
-                curr = curr.next;
+                cur = cur.next;
+            } else {
+                pre = pre.next;
+                cur = cur.next;
             }
         }
         return dummy.next;

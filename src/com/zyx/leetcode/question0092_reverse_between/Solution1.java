@@ -9,7 +9,7 @@ public class Solution1 {
         head.next.next.next.next = new ListNode(5);
 
         Solution1 solution1 = new Solution1();
-        ListNode listNode = solution1.reverseBetween(head, 1, 3);
+        ListNode listNode = solution1.reverseBetween(head, 2, 4);
 
         int count = 0;
         while (listNode != null && count < 6) {

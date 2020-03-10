@@ -25,10 +25,10 @@ public class Solution1 {
             return nums[0];
         }
 
-        int iMin = 1;
-        int iMax = 1;
-        int ans = Integer.MIN_VALUE;
-        for (int i = 0; i < nums.length; i++) {
+        int iMin = nums[0];
+        int iMax = nums[0];
+        int ans = nums[0];
+        for (int i = 1; i < nums.length; i++) {
             if (nums[i] < 0) {
                 int temp = iMin;
                 iMin = iMax;
@@ -46,7 +46,7 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        int result = solution1.maxProduct(new int[]{2,-1,1,1});
+        int result = solution1.maxProduct(new int[]{0,2});
         System.out.println("result = " + result);
 
     }

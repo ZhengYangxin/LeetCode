@@ -12,6 +12,7 @@ import java.util.Stack;
  *
  *
  * 基于二叉树的中序遍历，可以发现搜索二叉树是个有序数组
+ * 记录前一个值比较
  *
  * 执行耗时:2 ms,击败了39.38% 的Java用户,内存消耗:39.6 MB,击败了5.07% 的Java用户
  *
@@ -20,7 +21,7 @@ public class Solution1 {
     public boolean isValidBST(TreeNode root) {
         TreeNode cur = root;
         Stack<TreeNode> stack = new Stack<>();
-        int last = Integer.MIN_VALUE;
+        TreeNode pre = null;
         while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
                 stack.push(cur);
@@ -28,12 +29,12 @@ public class Solution1 {
             }
 
             TreeNode node = stack.pop();
-            if (node.val < last) {
+            if (pre != null && pre.val >= node.val) {
                 return false;
             }
-            last = node.val;
-            cur = node.right;
 
+            pre = node;
+            cur = node.right;
         }
         return true;
     }

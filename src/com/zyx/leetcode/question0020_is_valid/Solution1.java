@@ -21,17 +21,18 @@ public class Solution1 {
     }
 
     public boolean isValid(String s) {
-        if (s == null) {
+        if (s == null || s.length() == 0) {
             return true;
         }
+
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
-            Character c = s.charAt(i);
+            char c = s.charAt(i);
             if (map.containsKey(c)) {
                 stack.push(c);
             } else {
-                Character pop = stack.isEmpty() ? '#' : stack.pop();
-                if (!c.equals(map.get(pop))) {
+                char pop = stack.isEmpty() ? '#' : stack.pop();
+                if (map.get(pop) != c) {
                     return false;
                 }
             }
@@ -41,7 +42,7 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        boolean valid = solution1.isValid("()");
+        boolean valid = solution1.isValid("()[]{}");
         System.out.println("isValid: " + valid);
 
     }
