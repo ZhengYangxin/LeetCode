@@ -503,3 +503,65 @@ public void insertion(int[] nums) {
 
 236 105
 46，47
+
+
+kmp
+
+public int[] prefixTable(String pattern) {
+    int[] prefix = new int[pattern.length+1];
+
+    int len =0;
+    int i = 1;
+    while( i < pattern.length) {
+        if (pattern.charAt(i) == pattern.charAt(len) {
+            len++;
+            prefix[i] = len;
+            i++;
+        } else {
+            if (len > 0) {
+                len = prefix[len-1];
+            } else {
+                prefix[len] = len;
+                i++;
+            }
+        }
+    }
+
+    System.arraycopy(prefix, 0, prefix, 1, prefix.length -1);
+
+    prefix[0] = -1;
+    return prefix;
+}
+
+// https://www.bilibili.com/video/av11866460/?spm_id_from=333.788.videocard.0
+public int strStr(String text, String pattern) {
+    if (pattern.isEmpty) {
+        return 0;
+    }
+
+    int n = text.length;
+    int m = pattern.length;
+
+    int i = 0, j=0;
+
+    while (i < n) {
+
+        if( j = m-1 && text.charAt(i) == pattern.charAt(j)){
+            return i - j;
+        }
+
+        if (text.charAt(i) == pattern.charAt(j)) {
+            i++;
+            j++;
+        } else {
+            j = prefix[j];
+
+            if (prefix = -1){
+                i ++;
+                j++;
+            }
+        }
+    }
+
+    return -1;
+}

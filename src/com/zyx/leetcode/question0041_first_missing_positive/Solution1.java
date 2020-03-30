@@ -15,17 +15,11 @@ package com.zyx.leetcode.question0041_first_missing_positive;
 public class Solution1 {
 
     public int firstMissingPositive(int[] nums) {
-
         for (int i = 0; i < nums.length; i++) {
 
-            if (nums[i] <= 0 || nums[i] > nums.length) {
-                continue;
+            while (nums[i] > 0 && nums[i] <= nums.length && nums[i] != nums[nums[i] - 1]) {
+                swap(nums, i, nums[i] - 1);
             }
-
-            while (nums[nums[i] -1]!= nums[i]){
-                swap(nums, nums[i] - 1, i);
-            }
-
         }
 
         for (int i = 0; i < nums.length; i++) {

@@ -16,16 +16,16 @@ public class Solution1 {
             temp[num]++;
         }
 
-        int i = 0;
+        int index = 0;
         for (int n : arr2) {
             while (temp[n]-- > 0) {
-                arr1[i++] = n;
+                arr1[index++] = n;
             }
         }
 
         for (int j = 0; j < temp.length; j++) {
             while (temp[j]-- > 0) {
-                arr1[i++] = j;
+                arr1[index++] = j;
             }
         }
         return arr1;

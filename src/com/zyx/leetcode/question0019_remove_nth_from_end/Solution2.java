@@ -17,24 +17,24 @@ package com.zyx.leetcode.question0019_remove_nth_from_end;
 public class Solution2 {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode root = new ListNode(0);
-        root.next = head;
-        ListNode fast = root;
-        ListNode slow = root;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
 
-        for (int i = 1; i <= n + 1; i++) {
-            if (fast != null) {
-                fast = fast.next;
+        ListNode first = dummy;
+        for (int i = 0; i < n+1; i++) {
+            if (first != null) {
+                first = first.next;
             }
         }
 
-        while (fast != null) {
-            fast = fast.next;
-            slow = slow.next;
+        ListNode second = dummy;
+        while (first != null) {
+            second = second.next;
+            first = first.next;
         }
-        slow.next = slow.next.next;
+        second.next = second.next.next;
 
-        return root.next;
+        return dummy.next;
     }
 
 }

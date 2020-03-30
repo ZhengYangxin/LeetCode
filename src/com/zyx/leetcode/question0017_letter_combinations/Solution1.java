@@ -12,6 +12,8 @@ import java.util.Map;
  * 22括号生成
  * 回溯法，递归
  *
+ * 执行耗时:10 ms,击败了6.23% 的Java用户,内存消耗:39 MB,击败了5.08% 的Java用户
+ *
  */
 public class Solution1 {
     public List<String> letterCombinations(String digits) {

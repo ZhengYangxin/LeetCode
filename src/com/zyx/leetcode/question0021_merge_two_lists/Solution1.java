@@ -25,15 +25,6 @@ public class Solution1 {
             }
             cur = cur.next;
         }
-
-//        if (p != null) {
-//            cur.next = p;
-//        }
-//
-//        if (q != null) {
-//            cur.next = q;
-//        }
-
         cur.next = p != null ? p : q;
 
         return root.next;

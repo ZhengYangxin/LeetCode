@@ -14,7 +14,7 @@ package com.zyx.leetcode.question0052_total_n_queens;
  * 最后bits的值中，1表示可以放皇后
  *
  * 循环bits找到最低位的1进行递归，并消除低位1
- * int p = bits & -b  得到最低位的1
+ * int p = bits & -bit  得到最低位的1
  * solve(row + 1, col | p, (ld | p) << 1, (rd | p) >> 1); 当前行最低位的1放入皇后，更新行，及列撇，呐的值
  * bits = bits & (bits - 1)  消除最低位的1
  */
@@ -28,7 +28,7 @@ public class Solution2 {
             return;
         }
 
-        int bits = (~((col | ld | rd))) & (1 << size - 1);
+        int bits = (~(col | ld | rd)) & (1 << size - 1);
 
         while (bits != 0) {
             int p = bits & -bits;

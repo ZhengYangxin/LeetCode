@@ -12,6 +12,9 @@ package com.zyx.leetcode.question0011_max_area;
  * 时间复杂度O(n)
  * 空间复杂度O(1)
  *
+ * 执行耗时:3 ms,击败了91.90% 的Java用户,内存消耗:41.1 MB,击败了5.03% 的Java用户
+ *
+ *
  */
 public class Solution2 {
     public int maxArea(int[] height) {
@@ -21,15 +24,6 @@ public class Solution2 {
         }
 
         for (int i = 0, j = height.length - 1; i < j;) {
-//            int minHeight = Math.min(height[i], height[j]);
-//            int area = (j - i) * minHeight;
-//            maxArea = Math.max(maxArea, area);
-//
-//            if (height[i] > height[j]) {
-//                j--;
-//            } else {
-//                i++;
-//            }
             int minHeight = height[i] < height[j] ? height[i++] : height[j--];
             int area = (j - i + 1) * minHeight; // 上一步做了自减/增操作
             maxArea = Math.max(maxArea, area);

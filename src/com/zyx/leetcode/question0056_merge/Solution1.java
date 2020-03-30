@@ -7,28 +7,37 @@ import java.util.List;
 
 public class Solution1 {
     public int[][] merge(int[][] intervals) {
-        if (intervals.length <= 1) {
+        if (intervals == null || intervals.length == 0) {
             return intervals;
         }
 
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                return Integer.compare(o1[0], o2[0]);
+                return o1[0] - o2[0];
             }
         });
 
-        List<int[]> result = new ArrayList<>();
-        int[] newInterval = intervals[0];
-        result.add(newInterval);
-        for (int[] interval : intervals) {
-            if (interval[0] <= newInterval[1]) {
-                newInterval[1] = Math.max(newInterval[1], interval[1]);
+        List<int[]> res = new ArrayList<>();
+        int[] cur = intervals[0];
+
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] > cur[1]) {
+                res.add(cur);
+                cur = intervals[i];
             } else {
-                newInterval = interval;
-                result.add(newInterval);
+                cur[1] = Math.max(intervals[i][1], cur[1]);
             }
         }
-        return result.toArray(new int[result.size()][]);
+
+        res.add(cur);
+
+        int[][] ans = new int[res.size()][2];
+        for (int i = 0; i < res.size(); i++) {
+            ans[i] = res.get(i);
+        }
+
+        return ans;
+
     }
 }

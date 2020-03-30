@@ -20,12 +20,12 @@ public class Solution2 {
             } else if (s.charAt(i) == ')') {
                 right++;
             }
-
             if (left == right) {
                 maxLength = Math.max(maxLength, 2 * right);
             }else if (right > left) {
                 left = right = 0;
             }
+
         }
 
         left = right = 0;

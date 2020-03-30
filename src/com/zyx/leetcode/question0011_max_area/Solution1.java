@@ -6,17 +6,14 @@ package com.zyx.leetcode.question0011_max_area;
  */
 public class Solution1 {
     public int maxArea(int[] height) {
-        int maxArea = 0;
-        if (null == height || height.length == 0) {
-            return maxArea;
+        if (height == null || height.length == 0) {
+            return 0;
         }
-
+        int maxArea = 0;
         for (int i = 0; i < height.length - 1; i++) {
-            for (int i1 = i + 1; i1 < height.length; i1++) {
-//                int minHeight = height[i] > height[i1] ? height[i1] : height[i];
-                int minHeight = Math.min(height[i], height[i1]);
-                int area = (i1 - i) * minHeight;
-                maxArea = Math.max(maxArea, area);
+            for (int j = i + 1; j < height.length; j++) {
+                int lowHeight = Math.min(height[i], height[j]);
+                maxArea = Math.max(maxArea, (j - i) * lowHeight);
             }
         }
         return maxArea;

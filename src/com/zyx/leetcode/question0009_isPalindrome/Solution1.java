@@ -5,6 +5,8 @@ package com.zyx.leetcode.question0009_isPalindrome;
  * 若是回文数则一定不会越界，和负数
  *
  * 获得反转的数字，与原数字相同则为回文数
+ *
+ * 执行耗时:9 ms,击败了99.08% 的Java用户，内存消耗:40.5 MB,击败了5.00% 的Java用户
  */
 public class Solution1 {
     public boolean isPalindrome(int x) {
@@ -20,6 +22,5 @@ public class Solution1 {
 
         // 1221  12321  奇数偶数的判断
         return reverse == x || x == reverse / 10;
-
     }
 }

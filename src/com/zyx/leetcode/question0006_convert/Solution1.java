@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Solution1 {
     public String convert(String s, int numRows) {
-        if (numRows < 2) { // 0行或者1行
+        if (s == null || s.length() == 0 || numRows < 2) { // 0行或者1行
             return s;
         }
 
@@ -25,14 +25,13 @@ public class Solution1 {
             list.add(new StringBuilder());
         }
 
-        int i = 0, flag = -1;
+        int i = 0, flag = 1;
 
         for (char c : s.toCharArray()) {
             list.get(i).append(c);
+            i += flag;
 
             if (i == 0 || i == numRows -1) flag = -flag;
-
-            i += flag;
         }
 
         StringBuilder res = new StringBuilder();

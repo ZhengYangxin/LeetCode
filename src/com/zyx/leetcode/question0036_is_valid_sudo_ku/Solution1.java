@@ -15,7 +15,7 @@ public class Solution1 {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] != '.') {
                     int num = board[i][j] - '1';
-                    int blockIndex = i / 3 * 3 + j % 3;
+                    int blockIndex = i / 3 * 3 + j / 3;
 
                     if (row[i][num] || col[j][num] || block[blockIndex][num]) {
                         return false;

@@ -42,7 +42,7 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        int result = solution1.myAtoi("2147483646");
+        int result = solution1.myAtoi("9223372036854775808");
         System.out.println("result = " + result);
     }
 }

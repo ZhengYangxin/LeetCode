@@ -23,7 +23,12 @@ public class Solution1 {
 
     public static void main(String[] args) {
         Solution1 solution1 = new Solution1();
-        solution1.nextPermutation(new int[]{1, 1});
+        int[] nums = new int[]{1, 5,1};
+        solution1.nextPermutation(nums);
+        for (int num : nums) {
+            System.out.println("num = " + num);
+        }
+
     }
 
     public void nextPermutation(int[] nums) {
@@ -43,7 +48,7 @@ public class Solution1 {
                 j--;
             }
 
-            swap(nums, k, j);
+            swap(nums, k, k+1);
         }
 
         reserve(nums, k + 1); // 对 [k+1, n-1]的元素进行递增排序

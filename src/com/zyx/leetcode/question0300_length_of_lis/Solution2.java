@@ -4,6 +4,9 @@ package com.zyx.leetcode.question0300_length_of_lis;
  * 动态规划
  *
  * dp[i] 表示以 nums[i] 这个数结尾的最长递增子序列的长度。
+ *
+ * 执行耗时:14 ms,击败了58.52% 的Java用户,内存消耗:37.7 MB,击败了5.05% 的Java用户
+ *
  */
 public class Solution2 {
     public int lengthOfLIS(int[] nums) {
