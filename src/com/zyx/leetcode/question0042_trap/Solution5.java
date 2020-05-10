@@ -1,5 +1,7 @@
 package com.zyx.leetcode.question0042_trap;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -20,17 +22,16 @@ public class Solution5 {
             return sum;
         }
 
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         for (int i = 0; i < height.length; i++) {
             while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
                 int top = stack.pop();
                 if (stack.isEmpty()) break;
 
                 int h = Math.min(height[stack.peek()], height[i]) - height[top];
-                int dist = i - stack.peek() - 1;
+                int dist = (i - stack.peek() - 1);
                 sum += dist * h;
             }
-
             stack.push(i);
         }
 

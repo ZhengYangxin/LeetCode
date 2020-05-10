@@ -28,7 +28,7 @@ public class Solution2 {
             return;
         }
 
-        int bits = (~(col | ld | rd)) & (1 << size - 1);
+        int bits = (~(col | ld | rd)) & (1 << (size - 1));
 
         while (bits != 0) {
             int p = bits & -bits;

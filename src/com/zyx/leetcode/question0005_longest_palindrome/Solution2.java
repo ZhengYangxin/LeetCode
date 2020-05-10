@@ -5,6 +5,8 @@ package com.zyx.leetcode.question0005_longest_palindrome;
  * 向两边扩展  [i,j] 是回文串， 当 j - i < 2 说明是一个空串，或者只有一个字符串则肯定是回文串
  * dp[i, j]  = dp[i+1, j-1]  && s[i] == s[j]
  *
+ * 执行耗时:173 ms,击败了23.89% 的Java用户，内存消耗:43.4 MB,击败了10.38% 的Java用户
+ *
  */
 public class Solution2 {
 

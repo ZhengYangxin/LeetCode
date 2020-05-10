@@ -31,20 +31,14 @@ public class Solution2 {
         }
 
         for (int i = 1; i < height.length - 1; i++) {
-
             int maxLeft = 0;
-            for (int j = i - 1; j >= 0; j--) {
-                if (height[j] > maxLeft) {
-                    maxLeft = height[j];
-                }
+            for (int j = i-1; j >= 0; j++) {
+                maxLeft = Math.max(maxLeft, height[i]);
             }
 
             int maxRight = 0;
-
             for (int j = i + 1; j < height.length; j++) {
-                if (height[j] > maxRight) {
-                    maxRight = height[j];
-                }
+                maxRight = Math.max(maxRight, height[maxRight]);
             }
 
             int minValue = Math.min(maxLeft, maxRight);

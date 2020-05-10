@@ -19,26 +19,32 @@ public class Solution1 {
             return 0;
         }
 
-        int k = 2;
-        int[][][] dp = new int[prices.length][k+1][2];
+        int num = 2;
+        int[][][] dp = new int[prices.length][num + 1][2];
 
         for (int i = 0; i < prices.length; i++) {
-            for (int j = k; j >= 1; j--) {
-                if (i - 1 == -1) { // 处理base
-                    dp[0][k][0] = 0;
-                    dp[0][k][1] = -prices[i];
+            for (int k = num; k >= 1; k--) {
+                if (i - 1 == -1) {
+                    dp[i][k][0] = 0;
+                    dp[i][k][1] = -prices[i];
                     continue;
                 }
                 dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
                 dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
             }
         }
-        return dp[prices.length - 1][k][0];
+
+        return dp[prices.length - 1][num][0];
     }
 
+
+
     public static void main(String[] args) {
-        Solution2 solution2 = new Solution2();
+        Solution1 solution2 = new Solution1();
         int result = solution2.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4});
         System.out.println("result = " + result);
     }
+
+
+
 }

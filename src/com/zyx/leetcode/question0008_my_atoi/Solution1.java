@@ -27,7 +27,6 @@ public class Solution1 {
                 break;
             }
 
-
             if (Integer.MAX_VALUE / 10 < total || (Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }

@@ -27,7 +27,7 @@ public class Solution1 {
         }
 
         while (l2 != null) {
-            s1.push(l2.val);
+            s1.push(l2. val);
             l2 = l2.next;
         }
 
@@ -40,6 +40,7 @@ public class Solution1 {
 
             int temp = sum % 10;
 
+            // 头插法
             ListNode node = new ListNode(temp);
 
             node.next = dummy.next;

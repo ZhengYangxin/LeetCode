@@ -43,12 +43,13 @@ public class Solution2 {
      */
     private int findKthInTwoArrays(int[] nums1, int left1, int right1, int[] nums2, int left2, int right2, int k) {
         int n1 = right1 - left1 + 1, n2 = right2 - left2 + 1;
+        // 二分查找过程中，若其中一个数组已经排除，则在另一个数组中。可以优先定义那个数组为长数组方便操作
         if (n1 > n2) {
             return findKthInTwoArrays(nums2, left2, right2, nums1, left1, right1, k);
         }
 
         if (n1 == 0) {
-            return nums2[left1 + k - 1];
+            return nums2[left2 + k - 1];
         }
 
         if (k == 1) {
@@ -63,5 +64,6 @@ public class Solution2 {
 
         return findKthInTwoArrays(nums1, left1 + i, right1, nums2, left2, right2, k - i);
     }
+
 
 }
