@@ -12,52 +12,45 @@ package com.zyx.leetcode.base_structure;
  *
  */
 class Trie1 {
-
     private TreeNode root;
 
-    /** Initialize your data structure here. */
     public Trie1() {
-        root = new TreeNode();
+        this.root = new TreeNode();
     }
 
-    /** Inserts a word into the trie. */
     public void insert(String word) {
         TreeNode node = root;
+
         for (int i = 0; i < word.length(); i++) {
-            char currentChar = word.charAt(i);
-            if (!node.contains(currentChar)) {
-                node.put(currentChar, new TreeNode());
+            char ch = word.charAt(i);
+            if (!node.contains(ch)) {
+                node.put(ch, new TreeNode());
             }
-            node = node.get(currentChar);
+            node = node.get(ch);
         }
         node.setEnd(word);
-
     }
 
-    /** Returns if the word is in the trie. */
     public boolean search(String word) {
         TreeNode node = root;
         for (int i = 0; i < word.length(); i++) {
-            char currentChar = word.charAt(i);
-            if (node.contains(currentChar)) {
-                node = node.get(currentChar);
-            } else {
+            char ch = word.charAt(i);
+            if (!node.contains(ch)) {
                 return false;
             }
+            node = node.get(ch);
         }
         return node.isEnd();
     }
 
-    /** Returns if there is any word in the trie that starts with the given prefix. */
-    public boolean startsWith(String prefix) {
+    public boolean searchPrefix(String prefix) {
         TreeNode node = root;
         for (int i = 0; i < prefix.length(); i++) {
-            char currentChar = prefix.charAt(i);
-            if (node.contains(currentChar)) {
-                node = node.get(currentChar);
-            } else {
+            char ch = prefix.charAt(i);
+            if (!node.contains(ch)) {
                 return false;
             }
+            node = node.get(ch);
         }
         return true;
     }
@@ -65,34 +58,34 @@ class Trie1 {
 }
 
 class TreeNode {
-    private boolean end;
-    private TreeNode[] links;
+
     private int N = 26;
+    private TreeNode[] links;
+    private boolean end;
     private String word;
 
     public TreeNode() {
-        this.links = new TreeNode[N];
+        links = new TreeNode[N];
     }
 
-    public boolean contains(char key) {
-        return links[key - 'a'] != null;
-    }
-
-    public TreeNode get(char ch) {
-        return links[ch - 'a'];
+    public boolean contains(char ch) {
+        return links[ch - 'a'] != null;
     }
 
     public void put(char ch, TreeNode node) {
         links[ch - 'a'] = node;
     }
 
-    public boolean isEnd() {
-        return end;
+    public TreeNode get(char ch) {
+        return links[ch - 'a'];
     }
 
     public void setEnd(String word) {
-        this.end = true;
+        end = true;
         this.word = word;
     }
 
+    public boolean isEnd() {
+        return end;
+    }
 }

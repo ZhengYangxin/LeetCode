@@ -21,9 +21,7 @@ public class Solution1 {
             while (j<= end && nums[i] > nums[j]) j++;
             count += j - (mid + 1);
         }
-
         merge(nums, begin, mid, end);
-
         return count;
     }
 

@@ -23,16 +23,15 @@ public class UnionFind {
 
     private int count;
     private int[] parent;
-    // 新增一个数组记录树的“重量”
     private int[] size;
 
     public UnionFind(int n) {
-        count = n;
-        parent = new int[n];
-        size = new int[n];
-        for (int i = 0; i < parent.length; i++) {
+        this.count = n;
+        this.parent = new int[n];
+        this.size = new int[n];
+
+        for (int i = 0; i < n; i++) {
             parent[i] = i;
-            // 默认初始化为1
             size[i] = 1;
         }
     }
@@ -42,17 +41,17 @@ public class UnionFind {
             parent[p] = parent[parent[p]];
             p = parent[p];
         }
+
         return p;
     }
-
 
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
-        if (rootP == rootQ) return;
-//        parent[rootP] = rootQ;
+        if (rootP == rootQ) {
+            return;
+        }
 
-        // 通过节点的树的大小，确定谁连接谁
         if (size[rootP] > size[rootQ]) {
             parent[rootQ] = rootP;
             size[rootP] += size[rootQ];
@@ -60,6 +59,7 @@ public class UnionFind {
             parent[rootP] = rootQ;
             size[rootQ] += size[rootP];
         }
+
         count--;
     }
 }

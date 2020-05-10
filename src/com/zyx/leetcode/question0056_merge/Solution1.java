@@ -11,6 +11,7 @@ public class Solution1 {
             return intervals;
         }
 
+        // 排序后进行先后比较
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
@@ -22,7 +23,7 @@ public class Solution1 {
         int[] cur = intervals[0];
 
         for (int i = 1; i < intervals.length; i++) {
-            if (intervals[i][0] > cur[1]) {
+            if (intervals[i][0] >    cur[1]) {
                 res.add(cur);
                 cur = intervals[i];
             } else {

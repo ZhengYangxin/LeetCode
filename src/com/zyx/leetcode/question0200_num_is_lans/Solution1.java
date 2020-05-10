@@ -5,6 +5,9 @@ package com.zyx.leetcode.question0200_num_is_lans;
  *
  */
 public class Solution1 {
+    private int[] dx = new int[]{-1, 0, 1, 0};
+    private int[] dy = new int[]{0, -1, 0, 1};
+
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
@@ -33,9 +36,8 @@ public class Solution1 {
         }
 
         grid[i][j] = '0';
-        dfs(grid, i - 1, j);
-        dfs(grid, i + 1, j);
-        dfs(grid, i, j - 1);
-        dfs(grid, i, j + 1);
+        for (int k = 0; k < 4; k++) {
+            dfs(grid, i + dx[k], j + dy[k]);
+        }
     }
 }

@@ -21,7 +21,7 @@ public class Solution1 {
     public void solve(int[] nums, ArrayDeque<Integer> path, List<List<Integer>> res, boolean[] visited) {
         if (path.size() == nums.length) {
             res.add(new ArrayList<Integer>(path));
-        }
+        }   
 
         for (int i = 0; i < nums.length; i++) {
             if (visited[i]) continue;

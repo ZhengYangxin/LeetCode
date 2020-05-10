@@ -11,46 +11,44 @@ public class Solution1 {
         return cleanSpace(chs);
     }
 
-    public void reverse(char[] a, int i, int j) {
-        char[] chs = a;
-        for (; i < j; i++, j--) {
-            char temp = chs[i]; chs[i] = chs[j]; chs[j] = temp;
+    public void reverse(char[] chs, int i, int j) {
+        while (i < j) {
+            char temp = chs[i];
+            chs[i] = chs[j];
+            chs[j] = temp;
+            i++;
+            j--;
         }
     }
 
-    public void reverseWords(char[] a, int n) {
+    public void reverseWords(char[] chs, int length) {
         int i = 0, j = 0;
-        while (i < n) {
-            while (i < j || i < n && a[i] == ' ') {
+        while (i < length) {
+            while (i < j || i < length && chs[i] == ' ') {
                 i++;
             }
-            while (j < i || j < n && a[j] != ' ') {
+
+            while (j < i || j < length && chs[j] != ' ') {
                 j++;
             }
-            reverse(a, i, j - 1);
+
+            reverse(chs, i, j - 1);
         }
     }
 
     public String cleanSpace(char[] chs) {
-        int len = chs.length;
-//        while (st < len && chs[st] == ' ') {
-//            st++;
-//        }
-//
-//        while (st < len && chs[len - 1] == ' ') {
-//            len--;
-//        }
-//        return new String(chs, st, len);
-
         int i = 0, j = 0;
-        while (j < len) {
-            while (j<len && chs[j] == ' ') j++;
-            while (j <len && chs[j] != ' ') chs[i++] = chs[j++];
-            while (j<len && chs[j] == ' ') j++;
-            if (j< len) chs[i++] = ' ';
+        while (i < chs.length) {
+            while (i < chs.length && chs[i] == ' ') i++;
+            while (i < chs.length && chs[i] != ' ') chs[j++] = chs[i++];
+            while (i <chs.length && chs[i] == ' ') i++;
+            if (i < chs.length) {
+                chs[j++] = ' ';
+            }
         }
+        return new String(chs, 0, j);
 
-        return new String(chs, 0, i);
+
     }
 
     public static void main(String[] args) {

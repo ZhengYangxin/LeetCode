@@ -19,7 +19,7 @@ public class Solution1 {
         if (null == lists || (len = lists.length) == 0) {
             return null;
         }
-
+        // len 为1就只有一个链表，直接返回lists[0]，否则需要做首尾分治合并
         while (len > 1) {
             for (int i = 0; i < len / 2; i++) {
                 lists[i] = mergeTwoNode(lists[i], lists[len - 1 - i]);
@@ -30,25 +30,22 @@ public class Solution1 {
         return lists[0];
     }
 
-    private ListNode mergeTwoNode(ListNode head1, ListNode head2) {
-        ListNode root = new ListNode(0);
-        ListNode p = head1;
-        ListNode q = head2;
-        ListNode cur = root;
-
-        while (p != null && q != null) {
+    private ListNode mergeTwoNode(ListNode p, ListNode q) {
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+        while(p != null && q != null) {
             if (p.val < q.val) {
-                cur.next = p;
+                curr.next = p;
                 p = p.next;
             } else {
-                cur.next = q;
+                curr.next = q;
                 q = q.next;
             }
-            cur = cur.next;
+            curr = curr.next;
         }
 
-        cur.next = p != null ? p : q;
-
-        return root.next; // 第一次结题错误，返回值root是头结点，并非开始节点
+        curr.next = p != null ? p : q;
+        
+        return dummy.next;
     }
 }
